@@ -667,6 +667,37 @@ InsertParser_Block1(std::map<std::string, mvPythonParser>& parsers)
 
 	{
 		std::vector<mvPythonDataElement> args;
+		args.push_back({ mvPyDataType::Bool, "show", mvArgType::POSITIONAL_ARG, "True",
+			"True to show the mouse cursor, False to hide it." });
+
+		mvPythonParserSetup setup;
+		setup.about = "Shows or hides the OS mouse cursor. "
+			"When hiding, Dear ImGui is instructed to stop overriding the cursor each frame "
+			"(ImGuiConfigFlags_NoMouseCursorChange), so platform-level hide calls are not "
+			"immediately undone. Passing True restores normal ImGui cursor management.";
+		setup.category = { "General" };
+
+		mvPythonParser parser = FinalizeParser(setup, args);
+		parsers.insert({ "show_cursor", parser });
+	}
+
+	{
+		std::vector<mvPythonDataElement> args;
+
+		mvPythonParserSetup setup;
+		setup.about = "Returns a dict with cursor debug info: "
+			"{ platform_cursor_visible: bool, imgui_no_cursor_change: bool }. "
+			"platform_cursor_visible reflects what the OS/GLFW reports. "
+			"imgui_no_cursor_change is True when ImGui is blocked from overriding the cursor each frame.";
+		setup.category = { "General" };
+		setup.returnType = mvPyDataType::Dict;
+
+		mvPythonParser parser = FinalizeParser(setup, args);
+		parsers.insert({ "get_cursor_info", parser });
+	}
+
+	{
+		std::vector<mvPythonDataElement> args;
 
 		mvPythonParserSetup setup;
 		setup.about = "Locks render thread mutex.";

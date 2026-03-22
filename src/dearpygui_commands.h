@@ -2689,6 +2689,35 @@ generate_uuid(PyObject* self, PyObject* args, PyObject* kwargs)
 }
 
 static PyObject*
+show_cursor(PyObject* self, PyObject* args, PyObject* kwargs)
+{
+	b8 show = true;
+	if (!Parse((GetParsers())["show_cursor"], args, kwargs, __FUNCTION__, &show))
+		return nullptr;
+
+	ImGuiIO& io = ImGui::GetIO();
+	if (show)
+		io.ConfigFlags &= ~ImGuiConfigFlags_NoMouseCursorChange;
+	else
+		io.ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
+
+	mvShowCursor((bool)show);
+	return GetPyNone();
+}
+
+static PyObject*
+get_cursor_info(PyObject* self, PyObject* args, PyObject* kwargs)
+{
+	bool platformVisible = mvIsCursorVisible();
+	bool imgui_no_change = (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_NoMouseCursorChange) != 0;
+
+	PyObject* pdict = PyDict_New();
+	PyDict_SetItemString(pdict, "platform_cursor_visible", mvPyObject(ToPyBool(platformVisible)));
+	PyDict_SetItemString(pdict, "imgui_no_cursor_change",  mvPyObject(ToPyBool(imgui_no_change)));
+	return pdict;
+}
+
+static PyObject*
 configure_app(PyObject* self, PyObject* args, PyObject* kwargs)
 {
 	if (kwargs == nullptr)

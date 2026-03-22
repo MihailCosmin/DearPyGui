@@ -9883,6 +9883,29 @@ def show_viewport(*, minimized: bool =False, maximized: bool =False, **kwargs) -
 
 	return internal_dpg.show_viewport(minimized=minimized, maximized=maximized, **kwargs)
 
+def show_cursor(show: bool = True) -> None:
+	"""	 Shows or hides the OS mouse cursor.
+
+	Args:
+		show (bool, optional): True to show the cursor, False to hide it. Default is True.
+	Returns:
+		None
+	"""
+
+	return internal_dpg.show_cursor(show)
+
+def get_cursor_info() -> dict:
+	"""	 Returns a dict with cursor debug info.
+
+	Keys:
+		platform_cursor_visible (bool): What the OS/GLFW currently reports.
+		imgui_no_cursor_change (bool): True when ImGui is blocked from overriding the cursor.
+	Returns:
+		dict
+	"""
+
+	return internal_dpg.get_cursor_info()
+
 def split_frame(**kwargs) -> None:
 	"""	 Waits one frame.
 

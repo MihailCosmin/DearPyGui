@@ -3,6 +3,7 @@
 
 static BYTE gprevious_ime_char;
 static WORD glang_id;
+static bool s_cursorHidden = false; // true when app has hidden the OS cursor
 
 // Forward declare message handler from imgui_impl_win32.cpp
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -155,6 +156,16 @@ mvHandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
 
 	switch (msg)
 	{
+
+	case WM_SETCURSOR:
+		// When the app has hidden the cursor, prevent DefWindowProc from
+		// restoring the arrow shape (which would make it reappear).
+		if (LOWORD(lParam) == HTCLIENT && s_cursorHidden)
+		{
+			::SetCursor(NULL);
+			return TRUE;
+		}
+		break;
 
 	case WM_GETMINMAXINFO:
 	{
@@ -445,6 +456,32 @@ mvMinimizeViewport(mvViewport& viewport)
 {
 	mvViewportData* viewportData = (mvViewportData*)viewport.platformSpecifics;
 	ShowWindow(viewportData->handle, SW_MINIMIZE);
+}
+
+void
+mvShowCursor(bool show)
+{
+	// Win32 ShowCursor uses a reference counter; restore it to the expected level.
+	if (!show && !s_cursorHidden)
+	{
+		while (::ShowCursor(FALSE) >= 0) {}
+		s_cursorHidden = true;
+	}
+	else if (show && s_cursorHidden)
+	{
+		while (::ShowCursor(TRUE) < 0) {}
+		s_cursorHidden = false;
+	}
+}
+
+bool
+mvIsCursorVisible()
+{
+	// ShowCursor(TRUE) increments and returns the new counter; ShowCursor(FALSE) decrements.
+	// A counter >= 0 means visible. We probe without permanently changing the state.
+	int count = ::ShowCursor(TRUE);   // +1
+	::ShowCursor(FALSE);              // restore
+	return count >= 1; // after our +1, >=1 means it was >=0 (visible) before
 }
 
 void

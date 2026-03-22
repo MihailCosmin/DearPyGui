@@ -11,6 +11,46 @@ import subprocess
 
 wip_version = "2.2"
 
+# Maps the integer VS major version (from vswhere) to a CMake generator string.
+_VS_GENERATORS = {
+    16: "Visual Studio 16 2019",
+    17: "Visual Studio 17 2022",
+    18: "Visual Studio 18 2026",
+}
+
+def _detect_vs_generator():
+    """Return the CMake -G string for the newest installed Visual Studio."""
+    import json
+    vswhere = (
+        r"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe"
+    )
+    if not os.path.isfile(vswhere):
+        # Fall back to the newer installer location used by VS 17+
+        vswhere = (
+            r"C:\Program Files\Microsoft Visual Studio\Installer\vswhere.exe"
+        )
+    if os.path.isfile(vswhere):
+        try:
+            out = subprocess.check_output(
+                [vswhere, "-latest", "-products", "*",
+                 "-requires", "Microsoft.VisualStudio.Component.VC.Tools.x86.x64",
+                 "-format", "json"],
+                stderr=subprocess.DEVNULL,
+            )
+            installs = json.loads(out.decode("utf-8", errors="replace"))
+            if installs:
+                # installationVersion is e.g. "17.11.0" or "18.0.0"
+                major = int(installs[0]["installationVersion"].split(".")[0])
+                if major in _VS_GENERATORS:
+                    return _VS_GENERATORS[major]
+                # Unknown future version — build the string generically
+                return "Visual Studio %d" % major
+        except Exception:
+            pass
+    # vswhere not found or failed — default to VS 17 2022
+    return "Visual Studio 17 2022"
+
+
 def version_number():
     """This function reads the version number which is populated by github actions"""
 
@@ -65,10 +105,15 @@ class DPGBuildCommand(distutils.cmd.Command):
         return
 
     if get_platform() == "Windows":
-        command = [r'set PATH="C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin";"C:\Program Files (x86)\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin";"C:\Program Files (x86)\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin";%PATH% && ']
-        command.append("mkdir cmake-build-local && ")
+        # Auto-detect the installed Visual Studio version via vswhere and map
+        # it to the correct CMake generator so the build works with VS 2019,
+        # VS 2022, VS 2026, etc. without manual changes.
+        vs_generator = _detect_vs_generator()
+        self.announce('Using CMake generator: %s' % vs_generator, level=distutils.log.INFO)
+
+        command = ["mkdir cmake-build-local && "]
         command.append("cd cmake-build-local && ")
-        command.append('cmake .. -G "Visual Studio 17 2022" -A "x64" -DMVDIST_ONLY=True -DMVDPG_VERSION=')
+        command.append('cmake .. -G "%s" -A "x64" -DMVDIST_ONLY=True -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DMVDPG_VERSION=' % vs_generator)
         command.append(version_number() + " -DMV_PY_VERSION=")
         command.append(str(sys.version_info[0]) + "." + str(sys.version_info[1]) + " && ")
         command.append("cd .. && cmake --build cmake-build-local --config Release")

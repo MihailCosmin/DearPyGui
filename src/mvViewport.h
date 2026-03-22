@@ -62,6 +62,8 @@ void        mvMinimizeViewport(mvViewport& viewport);
 void        mvRestoreViewport (mvViewport& viewport);
 void        mvRenderFrame();
 void        mvToggleFullScreen(mvViewport& viewport);
+void        mvShowCursor      (bool show);
+bool        mvIsCursorVisible ();
 
 static void mvOnResize()
 {

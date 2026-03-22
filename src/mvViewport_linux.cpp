@@ -243,6 +243,25 @@ mvMinimizeViewport(mvViewport& viewport)
 }
 
  void
+mvShowCursor(bool show)
+{
+    if (!GContext->viewport || !GContext->viewport->platformSpecifics)
+        return;
+    auto viewportData = (mvViewportData*)GContext->viewport->platformSpecifics;
+    glfwSetInputMode(viewportData->handle, GLFW_CURSOR,
+        show ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_HIDDEN);
+}
+
+ bool
+mvIsCursorVisible()
+{
+    if (!GContext->viewport || !GContext->viewport->platformSpecifics)
+        return true;
+    auto viewportData = (mvViewportData*)GContext->viewport->platformSpecifics;
+    return glfwGetInputMode(viewportData->handle, GLFW_CURSOR) == GLFW_CURSOR_NORMAL;
+}
+
+ void
 mvRestoreViewport(mvViewport& viewport)
 {
     auto viewportData = (mvViewportData*)viewport.platformSpecifics;

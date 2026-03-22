@@ -1,0 +1,263 @@
+C:\Users\Cosmin\Develop\DearPyGui\setup.py:161: DeprecationWarning: codecs.open() is deprecated. Use open() instead.
+  with open("./README.md", encoding='utf-8') as f:
+C:\Users\Cosmin\Develop\DearPyGui\setup.py:182: DeprecationWarning: codecs.open() is deprecated. Use open() instead.
+  with open(src_path + "/output/dearpygui/__init__.py", 'w') as file:
+C:\Users\Cosmin\Develop\DearPyGui\setup.py:60: DeprecationWarning: codecs.open() is deprecated. Use open() instead.
+  with open('version_number.txt', encoding='utf-8') as f:
+C:\Users\Cosmin\Develop\micomuEditor\.venv\Lib\site-packages\setuptools\dist.py:765: SetuptoolsDeprecationWarning: License classifiers are deprecated.
+!!
+
+        ********************************************************************************
+        Please consider removing the following classifiers in favor of a SPDX license expression:
+
+        License :: OSI Approved :: MIT License
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  self._finalize_license_expression()
+running bdist_wheel
+running build
+running build_py
+running dpg_build
+Using CMake generator: Visual Studio 18 2026
+Running command: Dear PyGui Build for Windows
+-- Selecting Windows SDK version 10.0.26100.0 to target Windows 10.0.26200.
+-- The C compiler identification is MSVC 19.50.35727.0
+-- The CXX compiler identification is MSVC 19.50.35727.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Deprecation Warning at thirdparty/freetype/CMakeLists.txt:88 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Warning (dev) at C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.2/Modules/FindPackageHandleStandardArgs.cmake:493 (message):
+  The package name passed to find_package_handle_standard_args() (PkgConfig)
+  does not match the name of the calling package (HarfBuzz).  This can lead
+  to problems in calling code that expects find_package() result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.2/Modules/FindPkgConfig.cmake:562 (find_package_handle_standard_args)
+  thirdparty/freetype/builds/cmake/FindHarfBuzz.cmake:33 (include)
+  thirdparty/freetype/CMakeLists.txt:191 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Could NOT find PkgConfig (missing: PKG_CONFIG_EXECUTABLE) 
+CMake Warning (dev) at C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.2/Modules/FindPackageHandleStandardArgs.cmake:493 (message):
+  The package name passed to find_package_handle_standard_args() (harfbuzz)
+  does not match the name of the calling package (HarfBuzz).  This can lead
+  to problems in calling code that expects find_package() result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  thirdparty/freetype/builds/cmake/FindHarfBuzz.cmake:62 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  thirdparty/freetype/CMakeLists.txt:191 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Could NOT find harfbuzz (missing: HARFBUZZ_INCLUDE_DIRS HARFBUZZ_LIBRARIES) 
+-- Could NOT find ZLIB (missing: ZLIB_LIBRARY ZLIB_INCLUDE_DIR) 
+-- Could NOT find PNG (missing: PNG_LIBRARY PNG_PNG_INCLUDE_DIR) 
+-- Could NOT find ZLIB (missing: ZLIB_LIBRARY ZLIB_INCLUDE_DIR) 
+-- Could NOT find BZip2 (missing: BZIP2_LIBRARIES BZIP2_INCLUDE_DIR) 
+-- Found Python: optimized;C:/Program Files/Python314/libs/python314.lib;debug;C:/Program Files/Python314/libs/python314_d.lib (found suitable exact version "3.14.3") found components: Development Development.Module Development.Embed
+-- Configuring done (4.2s)
+-- Generating done (0.3s)
+-- Build files have been written to: C:/Users/Cosmin/Develop/DearPyGui/cmake-build-local
+MSBuild version 18.4.0+6e61e96ac for .NET Framework
+
+  1>Checking Build System
+  Building Custom Rule C:/Users/Cosmin/Develop/DearPyGui/thirdparty/freetype/CMakeLists.txt
+  autofit.c
+  ftbase.c
+  ftbbox.c
+  ftbdf.c
+  ftbitmap.c
+  ftcid.c
+  ftfstype.c
+  ftgasp.c
+  ftglyph.c
+  ftgxval.c
+  ftinit.c
+  ftmm.c
+  ftotval.c
+  ftpatent.c
+  ftpfr.c
+  ftstroke.c
+  ftsynth.c
+  ftsystem.c
+  fttype1.c
+  ftwinfnt.c
+  Generating Code...
+  Compiling...
+  bdf.c
+  ftbzip2.c
+  ftcache.c
+  cff.c
+  type1cid.c
+  ftgzip.c
+  ftlzw.c
+  pcf.c
+  pfr.c
+  psaux.c
+  pshinter.c
+  psnames.c
+  raster.c
+  sfnt.c
+  smooth.c
+  truetype.c
+  type1.c
+C:\Users\Cosmin\Develop\DearPyGui\thirdparty\freetype\src\truetype\ttgload.c(1877,23): warning C4312: 'type cast': conversion from 'unsigned long' to 'void *' of greater size [C:\Users\Cosmin\Develop\DearPyGui\cmake-build-local\thirdparty\freetype\freetype.vcxproj]
+  (compiling source file '../../../thirdparty/freetype/src/truetype/truetype.c')
+  
+  type42.c
+  winfnt.c
+  ftdebug.c
+  Generating Code...
+  freetype.vcxproj -> C:\Users\Cosmin\Develop\DearPyGui\cmake-build-local\thirdparty\freetype\Release\freetype.lib
+  Building Custom Rule C:/Users/Cosmin/Develop/DearPyGui/src/CMakeLists.txt
+  cmake_pch.cxx
+  mvContext.cpp
+  mvMath.cpp
+  mvProfiler.cpp
+  dearpygui.cpp
+  mvViewport_win32.cpp
+  mvUtilities_win32.cpp
+  mvGraphics_win32.cpp
+  mvPyUtils.cpp
+  mvCustomTypes.cpp
+  mvBasicWidgets.cpp
+  mvTables.cpp
+  mvThemes.cpp
+  mvNodes.cpp
+  mvDrawings.cpp
+  mvGlobalHandlers.cpp
+  mvItemHandlers.cpp
+  mvValues.cpp
+  mvTextureItems.cpp
+  mvFontItems.cpp
+  mvColors.cpp
+  Generating Code...
+  Compiling...
+  mvPlotting.cpp
+  mvContainers.cpp
+  mvCallbackRegistry.cpp
+  mvLoadingIndicatorCustom.cpp
+  mvFontManager.cpp
+  mvToolManager.cpp
+  mvToolWindow.cpp
+  mvAboutWindow.cpp
+  mvDocWindow.cpp
+  mvMetricsWindow.cpp
+  mvStackWindow.cpp
+  mvStyleWindow.cpp
+  mvDebugWindow.cpp
+  mvLayoutWindow.cpp
+  mvAppItemState.cpp
+  mvAppItem.cpp
+  mvItemRegistry.cpp
+  mvDatePicker.cpp
+  mvTimePicker.cpp
+  mvSlider3D.cpp
+  Generating Code...
+  Compiling...
+  mvLoadingIndicator.cpp
+  mvFileDialog.cpp
+  mvFileExtension.cpp
+  imnodes.cpp
+  implot.cpp
+  implot_items.cpp
+  implot_demo.cpp
+  ImGuiFileDialog.cpp
+  imgui_stdlib.cpp
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_widgets.cpp
+  imgui_tables.cpp
+  imgui_freetype.cpp
+  imgui_impl_win32.cpp
+  imgui_impl_dx11.cpp
+  Generating Code...
+     Creating library C:/Users/Cosmin/Develop/DearPyGui/cmake-build-local/DearPyGui/Release/_dearpygui.lib and object C:/Users/Cosmin/Develop/DearPyGui/cmake-build-local/DearPyGui/Release/_dearpygui.exp
+  _dearpygui.vcxproj -> C:\Users\Cosmin\Develop\DearPyGui\cmake-build-local\DearPyGui\Release\_dearpygui.pyd
+  Building Custom Rule C:/Users/Cosmin/Develop/DearPyGui/CMakeLists.txt
+copying output\dearpygui\dearpygui.py -> build\lib.win-amd64-cpython-314\dearpygui
+copying output\dearpygui\demo.py -> build\lib.win-amd64-cpython-314\dearpygui
+copying output\dearpygui\experimental.py -> build\lib.win-amd64-cpython-314\dearpygui
+copying output\dearpygui\__init__.py -> build\lib.win-amd64-cpython-314\dearpygui
+copying output\dearpygui\_dearpygui.pyi -> build\lib.win-amd64-cpython-314\dearpygui
+copying output\dearpygui\__init__.py -> build\lib.win-amd64-cpython-314\dearpygui
+copying output\dearpygui\_dearpygui.pyd -> build\lib.win-amd64-cpython-314\dearpygui
+copying output\dearpygui\dearpygui.py -> build\lib.win-amd64-cpython-314\dearpygui
+copying output\dearpygui\demo.py -> build\lib.win-amd64-cpython-314\dearpygui
+copying output\dearpygui\experimental.py -> build\lib.win-amd64-cpython-314\dearpygui
+copying output\dearpygui\vcruntime140_1.dll -> build\lib.win-amd64-cpython-314\dearpygui
+running build_ext
+C:\Users\Cosmin\Develop\micomuEditor\.venv\Lib\site-packages\setuptools\_distutils\cmd.py:90: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        This deprecation is overdue, please update your project and remove deprecated
+        calls to avoid build errors in the future.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\dearpygui
+copying build\lib.win-amd64-cpython-314\dearpygui\dearpygui.py -> build\bdist.win-amd64\wheel\.\dearpygui
+copying build\lib.win-amd64-cpython-314\dearpygui\demo.py -> build\bdist.win-amd64\wheel\.\dearpygui
+copying build\lib.win-amd64-cpython-314\dearpygui\experimental.py -> build\bdist.win-amd64\wheel\.\dearpygui
+copying build\lib.win-amd64-cpython-314\dearpygui\vcruntime140_1.dll -> build\bdist.win-amd64\wheel\.\dearpygui
+copying build\lib.win-amd64-cpython-314\dearpygui\_dearpygui.pyd -> build\bdist.win-amd64\wheel\.\dearpygui
+copying build\lib.win-amd64-cpython-314\dearpygui\_dearpygui.pyi -> build\bdist.win-amd64\wheel\.\dearpygui
+copying build\lib.win-amd64-cpython-314\dearpygui\__init__.py -> build\bdist.win-amd64\wheel\.\dearpygui
+running install_egg_info
+running egg_info
+creating output\dearpygui.egg-info
+writing output\dearpygui.egg-info\PKG-INFO
+writing dependency_links to output\dearpygui.egg-info\dependency_links.txt
+writing top-level names to output\dearpygui.egg-info\top_level.txt
+writing manifest file 'output\dearpygui.egg-info\SOURCES.txt'
+reading manifest file 'output\dearpygui.egg-info\SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'output\dearpygui.egg-info\SOURCES.txt'
+Copying output\dearpygui.egg-info to build\bdist.win-amd64\wheel\.\dearpygui-2.2-py3.14.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\dearpygui-2.2.dist-info\WHEEL
+creating 'dist\\dearpygui-2.2-cp314-cp314-win_amd64.whl' and adding 'build\\bdist.win-amd64\\wheel' to it
+adding 'dearpygui/__init__.py'
+adding 'dearpygui/_dearpygui.pyd'
+adding 'dearpygui/_dearpygui.pyi'
+adding 'dearpygui/dearpygui.py'
+adding 'dearpygui/demo.py'
+adding 'dearpygui/experimental.py'
+adding 'dearpygui/vcruntime140_1.dll'
+adding 'dearpygui-2.2.dist-info/licenses/LICENSE'
+adding 'dearpygui-2.2.dist-info/METADATA'
+adding 'dearpygui-2.2.dist-info/WHEEL'
+adding 'dearpygui-2.2.dist-info/top_level.txt'
+adding 'dearpygui-2.2.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
